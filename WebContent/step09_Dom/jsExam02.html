@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>document를 이용하여 태그 생성</title>
+<script type="text/javascript">
+	window.onload= function(){
+		var h2 = document.createElement("h2"); //1. 태그 생성
+		h2.innerHTML ="대한민국 국보1호 남대문"; //2. 태그 내 내용 작성
+		document.body.appendChild(h2); //3. <body> 태그에 추가
+		
+		//<img> 태그
+		var img = document.createElement("img");
+		//<img> 속성 추가
+		img.src ="../images/korea.jpg";
+		img.width="300";
+		img.height="200";
+		//<body> 태그에 추가
+		document.body.appendChild(img); 
+		
+	};
+	
+	
+	
+	
+
+</script>
+</head>
+<body>
+    <!-- 남대문 이미지 표현 
+	<h2>대한민국 국보1호 남대문</h2>
+	<img src="../images/korea.jpg" width="300" height="200"/>
+	-->
+</body>
+</html>

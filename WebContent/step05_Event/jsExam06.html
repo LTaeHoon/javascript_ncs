@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>onKeyUp 이벤트 핸들러</title>
+  <script type="text/javascript">
+     function change(obj, name){ 
+        // onKeyUp 이벤트 핸들러 수행 함수
+       len = obj.value.length; // 텍스트 상자의 값 길이 구함
+       switch(name){
+       case "jumin1" :
+    	   if(len==6)
+    		   frm.jumin2.focus(); // 두번째 상자로 커서 이동
+    	   break;
+       case "jumin2" :
+    	   if(len==7)
+    		   frm.ok.focus(); // 버튼으로 커서 이동
+       	   break;  
+       } // switch end    	 
+       
+     }  
+  </script>
+</head>
+<body>
+  <form name="frm">
+    <h3> 주민번호를 입력하세요</h3>
+    <!-- onkeyup : key를 눌렀다 땐 후 이벤트 발생
+         onkeyup="change(this,'jumin1') : 현재 태그의 객체와 문자열 넘김
+     -->
+    <input type="text" name="jumin1" size="6" maxlength="6"
+           onkeyup="change(this,'jumin1')">-
+    <input type="text" name="jumin2" size="7" maxlength="7"
+           onkeyup="change(this,'jumin2')">
+    <br>
+    <input type="button" value="전송" name="ok" />       
+  </form>
+</body>
+</html>
+
+

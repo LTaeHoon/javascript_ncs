@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> 정규식 객체</title>
+<script type="text/javascript">
+	/*
+		정규식 객체 : 문자열 패턴을 정의하는 javascript 객체
+		활용분야 : 문자열 패턴 검사(비정형 데이터), 데이터 유효성 검증(검사)
+		형식1)
+		참조변수 = new RegExp('정규표현식');
+		형식2)
+		참조변수 = /정규표현식/;
+	*/
+	
+	var obj = new RegExp('javascript'); //정규식 객체 생성
+	var str = "java, javascript, python, spring"; //검색 대상 문자열
+	if(obj.test(str)){ //test(): 동일 패턴 있으면 true, 아니면 false
+		alert('동일 문자 있음');
+	}else{
+		alert('해당 문자 없음');
+	}
+	//형식2
+	var obj2 =  /javascript/; //정규식 객체 생성
+	var str = "java, javascript, python, spring"; //검색 대상 문자열
+	if(obj2.test(str)){ //test(): 동일 패턴 있으면 true, 아니면 false
+		alert('동일 문자 있음');
+	}else{
+		alert('해당 문자 없음');
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

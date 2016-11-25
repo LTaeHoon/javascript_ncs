@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>인라인 방식의 자바스크립트 예</title>
+<script type="text/javascript">
+ //자바스크립트 영역
+ function data_check() { //[전송] 클릭 시 호출 되는 함수
+	//alert('data_check 함수 호출');
+ 	if(document.frm.id.value ==""){  //id가 공백인 경우(true)
+ 		alert('아이디를 입력하세요.');  //알림창
+ 		document.frm.id.focus(); //해당 위치로 커서 이동
+ 		return false; //다음 태그 동작(서버에 데이터를 보내는 동작)을 차단시킴
+ 	}
+	if(!(new RegExp(/^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/)).test(document.frm.id.value)){
+ 		alert('아이디는 영대소문자, 숫자 포함하여 3~19자 내로 작성해주세요.')
+ 		document.frm.id.focus();
+ 		return false;
+ 	}
+	
+ 	if(document.frm.pwd.value ==""){ //pwd가 공백인 경우(true)
+ 		alert('패스워드를 입력하세요.');
+ 		document.frm.pwd.focus();
+ 		return false;
+ 	}
+ }
+</script>
+</head>
+<body>
+	<form name="frm" method="post" action="http://www.naver.com" onsubmit="return data_check()">
+		<!-- onsubmit = onclick = "return data_check()" 폼태그에 onsubmit과 전송버튼의 onclick은 같다, 따라서 폼태그에 onsubmit으로 대체 가능  -->
+		<p>아이디:<input type="text" name="id" size ="15"/></p>
+		<p>암 호 :<input type="password" name="pwd" size="15"/></p>
+		<p>
+		<input type="submit" value="전송"/> &nbsp;&nbsp;
+		<!--전송 버튼 클릭시 data_check() 호출 --> 
+		<input type="reset" value="취소"/>
+		</p>
+	</form>
+
+</body>
+</html>

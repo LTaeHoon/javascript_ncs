@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript">
+    // 현재 문서 로딩 시 자동으로 무명함수 호출
+    window.onload=function(){     
+    	img = document.getElementById("img");
+    	// 첫번째 버튼 객체 
+        btn1 = document.getElementById("btn1");
+        btn1.onclick = function (){ // 클릭 시 함수 호출
+        	zoomIn(); 
+		} 
+        // 두번째 버튼 객체 
+        btn2 = document.getElementById("btn2");
+        btn2.onclick = zoomOut; // 간략 표현        
+    }
+
+    function zoomIn(){ // 확대       
+        img.width += 15;
+        img.height += 15;
+    }
+
+    function zoomOut(){ // 축소
+        img.width -= 15;
+        img.height -= 15;
+    }
+</script>
+</head>
+<body>
+    <div align="center">
+      <img src = "../images/zoom.jpg" id="img" width="300" />
+      <hr>
+      <input type="button" id="btn1" value="확대(+)"/>
+      <input type="button" id="btn2" value="축소(-)"/>
+    </div>
+</body>
+</html>

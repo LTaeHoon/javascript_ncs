@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>함수내의 인수 처리</title>
+<script type="text/javascript">
+	function adder() {
+		var sum = 0; //지역변수
+		var i = arguments[0];  //첫번째 가인수
+		var j = arguments[1];  //두번째 가인수
+		sum = i+j;
+		alert('sum:'+sum);
+	}
+	//함수 호출
+	adder(100,200); //실인수
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

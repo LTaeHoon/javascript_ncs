@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSON 객체</title>
+<script type="text/javascript">
+ /*
+ 	JSON : 자바스크립트 표준 객체 표기법
+ 	 - 경량 데이터 교환방식 : java, R, Python, C++
+ 	 형식1){key:value}; //1:1 방식 일때
+ 	 형식2){key:[value1,value2,....valueN]}; //1:n : 키하나에 여러개의 값
+ 	 	  ex)Python : dict = d{'이름':['홍길동','이순신']}
+ */
+ //형식1){key:value};
+ var obj1 = {name : '홍길동', age:25, home:'서울시'}; //obj1.name
+ //형식2) obj2.product[0].name
+ var obj2 ={product:[
+ 			{name:'커피',price:2500},
+ 			{name:'주스',price:3000},
+ 			{name:'콜라',price:2000}
+	 ]};
+ 
+ //1.json 객체 보기
+ console.log("~~~~json 객체 보기 ~~~~"); //브라우저 출력(F12)
+ console.log(obj1);
+ 
+ //key 접근 : 1)객체 .key or 2)객체[key]
+ alert(obj1.name); //홍길동
+ alert(obj1['name']);// 홍길동
+ //obj2 객체의 커피 출력 - 객체.key[index].key
+ alert(obj2.product[0].name);
+ alert(obj2.product[2].price);
+ 
+ //2.json 객체 -> 문자열
+ console.log("~~~JSON 문자열 보기 ~~~");
+ console.log(JSON.stringify(obj1)); //object -> string
+ obj1Name=JSON.stringify(obj1.name); //홍길동 ->"홍길동"
+ alert(obj1Name);
+ obj2Name = JSON.stringify(obj2.product[1].name);
+ alert(obj2Name);
+ 
+ //3.문자열 -> json 객체 : json 파일 다운로드(text) -> 파싱(json 객체)
+ console.log("~~~JSON 객체 보기 ~~~");
+ console.log(JSON.parse(JSON.stringify(obj1))); //string -> object
+ alert(JSON.parse(obj1Name));
+ alert(JSON.parse(obj2Name));
+ 
+ /*
+ 	JSON.parse() 역할
+ 	- json 데이터의 문자열을 obj.key 형식으로 접근할 수 있는 
+ 	  json 객체로 변환해준다.
+ */
+ /*
+  문) "서울시"를 문자열로 출력하고, "콜라"를 객체로 출력하시오.
+  */
+  alert(JSON.stringify(obj1.home));
+  alert(JSON.parse(JSON.stringify(obj2.product[2].name)));
+ </script>	
+</head>
+<body>
+
+</body>
+</html>

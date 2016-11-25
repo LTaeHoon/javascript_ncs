@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>엘리먼트 값/객체 가져오기</title>
+<script type="text/javascript">
+	/*
+		body 태그의 엘리먼트(element) 가져오기
+		element : 태그 + 속성 + 값 + [내용]  (내용은 생략가능)
+		예1) <a herf='tst.hmtl'>텍스트</a>
+		예2) <input type="text" name="id" />
+		[document.]폼이름.변수.속성
+		document.frm.id.value
+	*/
+	function data_check(){
+		var input = document.frm.input.value;
+		if(input==''){
+			alert('데이터를 입력하세요');
+			document.frm.input.focus(); //입력상자에 커서 이동
+			return false;
+		}else{
+			alert(input);
+		}
+		
+	}//func end
+	
+	function data_input(){
+		//엘리먼트 객체 가져오기 (객체를 가져오면 스크립트 내에서 태그안에 속성을 수정 편집 할 수 있음)
+		//eval('document.폼이름.변수')
+		var input = eval('document.frm.input');//문자열 -> 코드 or 수식으로 변경
+		input.value='data 입력됨';
+		var num = 3.14159;
+		alert(eval('num+10'));
+	}//func end
+	
+</script>
+</head>
+<body>
+	<form name="frm">
+		
+		<input type="text" name="input" id="txt" size="15"/>
+		<!-- data 확인용 -->
+		<input type="button" value="확인" onclick ="data_check()"/>
+		<!-- data 입력용 -->
+		<input type="button" value="입력" onclick ="data_input()"/>
+		
+	</form>
+</body>
+</html>

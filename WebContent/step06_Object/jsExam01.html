@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function book(title, author, price){
+	//멤버변수 = 매개변수 1:n 관계 가능
+	this.title = title;
+	this.author=author;
+	this.price=price;	
+}
+/*
+ 문1) 생성자 함수 정의: person(name,age,address,phone)
+ 문2) 생성자 함수 이용 객체 생성
+ 문3) 객체 참조
+ */
+function person(name,age,address,phone){
+	 this.name = name;
+	 this.age=age;
+	 this.address=address;
+	 this.phone=phone; 
+ }
+</script>
+</head>
+<body>
+
+	<script type="text/javascript">
+	//생성자 함수 이용 객체 생성
+	//형식) 변수명(참조변수) = new 생성자함수(실인수);  //생성자함수:객체를 만들어주는 함수
+	b1 = new book('도가니','공지영',9500); //첫번째 객체 생성 
+	b2 = new book('홍길동','허균',25000); //두번째 객체 생성
+	b3 = new book('미실','김별아',28000); //세번째 객체 생성
+	
+	//객체 참조 :형식) 참조변수.멤버변수
+	document.write("제목 :"+b1.title+" 저자:"+b1.author+" 가격:"+b1.price+"<br>");
+	document.write("제목 :"+b2.title+" 저자:"+b2.author+" 가격:"+b2.price+"<br>");	
+	document.write("제목 :"+b3.title+" 저자:"+b3.author+" 가격:"+b3.price+"<br>");
+	
+	//person 객체 생성 p1,p2는 참조변수, 이 참조변수를 통해 객체를 컨트롤
+	p1 = new person('이태훈',31,'서울시 관악구 봉천동 673-138','01071802701');
+	p2 = new person('강란희',30,'서울시 관악구 봉천동 673-138','01091383879');
+	
+	//참조변수 이용
+	document.write("이름 :"+p1.name+" 나이:"+p1.age+" 주소:"+p1.address+" 전화번호:"+p1.phone+"<br>");
+	document.write("이름 :"+p2.name+" 나이:"+p2.age+" 주소:"+p2.address+" 전화번호:"+p2.phone+"<br>");
+	
+	//개선된 for문 이용
+	for(key in p1){
+		document.write(key +':' +p1[key] +'<br>');	
+	}
+	//key : name, age, address, phone
+	//p1[key] : p1['name'], ... p1['phone']
+	/*
+		참조방식 2가지
+		1. 참조변수.멤버변수
+		2. 참조변수[멤버변수]-> 개선된 for문
+	*/
+	//객체의 멤버변수 수정
+	p1.age = 23;
+	for(key in p1){
+		document.write(key +':' +p1[key] +'<br>');	
+	}
+	
+	//객체의 멤버 삭제
+	delete(p1.age);
+	for(key in p1){
+		document.write(key +':' +p1[key] +'<br>');	
+	}
+	
+	alert(typeof(p1));
+	
+	</script>
+</body>
+</html>

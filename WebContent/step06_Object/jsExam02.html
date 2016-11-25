@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSON</title>
+<script type="text/javascript">
+	/*
+		JSON :자바스크립트 표준 객체 표기법
+		형식 : {key:value}; -> python dict
+		객체 생성
+		예) 객체명 = {키:값, 키:값};
+		- 생성자 함수 없이 객체 생성 가능
+		- 경량으로 데이터 표기하는 표기법
+	*/
+	//var 생략 시 : 해당 변수는 전역변수로 사용할 수 있음
+	obj = {name:'홍길동',phone:'010-7180-2701',email:'lth1011@gmail.com'};
+	alert(typeof(obj));
+
+	//멤버변수자리에 key가 옴
+	//1. 객체참조1 : 참조변수.멤버변수(key)
+	document.write('name:'+obj.name+'<br>'); //name :홍길동
+	document.write('name:'+obj.phone+'<br>'); //name :홍길동
+	document.write('name:'+obj.email+'<br>'); //name :홍길동
+	
+	
+	//2. 객체참조2 : 참조변수[key]
+	document.write('name:'+ obj['name']+'<br>');
+	document.write('phone:'+ obj['phone']+'<br>');
+	document.write('email:'+ obj['email']+'<br>');
+	
+	//3. 개선된 for문으로 obj원소 출력하기
+	for(key in obj){
+		document.write(key+':'+obj[key] +'<br>');
+	}
+	//key:obj의 key가 순서대로 넘어온다.
+	
+	//4. 원소 수정
+	obj.name = '이순신'; //수정
+	delete (obj.email); //삭제
+	for(key in obj){
+		document.write(key+':'+obj[key] +'<br>');
+	}
+	
+	//5.with() 함수 : 이미 만들어진 내장함수
+	with(obj){  //이 코드 안에서는 obj 생략가능
+		document.write('name:'+ name +'<br>');
+		document.write('phone:'+ phone +'<br>');	
+	}
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

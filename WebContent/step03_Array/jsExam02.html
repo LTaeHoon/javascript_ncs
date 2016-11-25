@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>배열 객체에서 제공하는 함수</title>
+<script type="text/javascript">
+ var arr = [10,30,5,40,85,60];
+  alert(arr);
+ //오름차순 정렬
+ arr.sort();//ascii 정렬
+ //숫자정렬
+ arr.sort(function(left,right){
+	 return left - right;
+ });
+ alert(arr);
+ 
+ //내림차순 정렬 - 무명함수 이용
+ arr.sort(function(left,right){
+	 return right - left;
+ });
+ alert(arr);
+ 
+ //배열 index 반환하는 함수 - 배열명[색인]:data 저장 위치
+ var i = arr.indexOf(40);
+ alert('40위치:'+i); //2 -> 해당 data가 없으면 :-1을 리턴
+ 
+ var arr2 = new Array('홍길동','이순신','강감찬','유관순');
+ 
+ //toString(); 모든 원소를 콤마(,)로 구분하여 문자열 리턴
+ var result = arr2.toString();
+ document.write('result :'+ result+'<br>');
+ //join('구분자') : 지정한 구분자로 문자열 구분하여 리턴
+ var result2 = arr2.join('-');
+ document.write('result2 :'+ result2);
+ 
+ 
+</script>
+</head>
+<body>
+
+</body>
+</html>

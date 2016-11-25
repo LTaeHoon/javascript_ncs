@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ajax 개념</title>
+<script type="text/javascript">
+/*
+ 	Ajax : 자바스크립트와 xml 계열의 문가와 비동기통신 의미
+ 	xml계열 문서 : xml, html, jsp, php, json
+ 	형식) var 객체명 = new XMLHttpRequest();
+ */
+ function btnClick(){
+	 //div 객체 가져오기(3가지 방법이 있는데 여기서는 getid 사용)
+	 var result = document.getElementById("result"); //통신 결과 출력
+	 
+	 //1. 통신하기 위한 Ajax 객체 생성
+	 var request = new XMLHttpRequest();
+	 //2. 요청 준비 : request.open("전송방식","url or file",[true]/false); true이면 비동기 , false면 동기 통신
+	 request.open("get", "data/data.html", true);
+	 //true : 비동기, false :동기 통신
+	 //3. 데이터 요청 : send()
+	 request.send(); // 실제 통신
+	 //4. 데이터 수신 
+	 request.onreadystatechange = function(){
+		 if(request.readyState == 4){ //서버 응답 완료
+			 if(request.status == 200){ //정상 응답
+				result.innerHTML = request.responseText; 
+			    //텍스트 -> html 파싱
+			 }
+		 }
+	 };
+	 
+	 
+ }
+ 
+</script>
+</head>
+<body>
+  <input type="button" value="요청" onclick="btnClick()"/>
+  <hr>
+  <!-- 비동기 통신 결과 출력 부분 -->
+  <div id="result"></div>
+</body>
+</html>

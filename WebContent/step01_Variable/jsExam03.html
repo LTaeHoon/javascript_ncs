@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>형변환(casting)</title>
+<script type="text/javascript">
+//키보드 입력(항상 문자열로 입력 받음)
+	var input = prompt('숫자를 입력하세요.','0');
+	var calc1 = parseInt(input) + 100; //정수형 변환(parseInt)
+	document.write('calc1 ='+ calc1 +'<br>');
+	var calc2 = parseFloat(input) +100; //실수 형변환
+	document.write('calc2 ='+ calc2 +'<br>');
+	var calc3 = Number(input) +100; //모든 숫자의 형변환
+	document.write('calc3 ='+ calc3 +'<br>');
+	//자료형보기
+	document.write(typeof(calc1) + '<br>')  //number  (실수 정수 구분없이 number로 출력)
+	document.write(typeof(calc3) + '<br>')  //number
+</script>
+</head>
+<body>
+
+</body>
+</html>

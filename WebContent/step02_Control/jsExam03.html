@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>switch문 : 다중 선택문</title>
+<script type="text/javascript">
+	var menu = 3 //1.한식, 2.중식, 3.모름
+
+	switch(menu){ //switch(숫자or단일문자)
+	case 1:
+		alert('한식');
+		break; // 블럭 탈출
+	case 2:
+		alert('중식');
+		break;
+	default :
+		alert('모름');
+	}
+	
+	/*
+	문) 키보드로 나이를 입력받아서 1~10 :어린이, 11~19: 청소년, 20~:성인
+	*/
+	var age = Number(prompt('나이를 입력하세요.','1'));
+	
+	switch(true){
+	case age <11:
+		alert('당신은 어린이 입니다.');
+		break;
+	case age <20:
+		alert('당신은 청소년 입니다.');
+		break;	
+	default :
+		alert('당신은 성인 입니다.');
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

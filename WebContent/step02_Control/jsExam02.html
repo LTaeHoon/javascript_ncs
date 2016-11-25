@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>if(조건식1) ~ else if(조건식2)</title>
+<script type="text/javascript">
+	/*
+		문) 키보드로 점수(1~100)를 입력받아서 학점을 출력하시오.
+			조건1> grade : 학점 저장 변수
+			조건2> 100~90: 'A학점', 89~80 :'B학점' ... 60미만 : 'F학점'
+	*/
+	//1. 키보드 점수 입력
+	var score = Number(prompt('점수를 입력하세요:','0'));
+	var grade ="";
+	
+	//2. 비교 판단 : 실행문이 1줄인 경우 {} 생략 가능
+	if(score>=90 && score<100) grade ='A학점';
+	else if(score>=80) grade ='B학점';
+	else if(score>=70) grade ='C학점';
+	else if(score>=60) grade ='D학점';
+	else grade ='F학점';
+	//3. 결과 출력
+	document.write('당신의 성적은 '+score+' 이고, 학점은 '+grade+' 입니다.');
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>검색순위</title>
+<style type="text/css">
+#t1{
+text-align:center;
+background-color:green;
+width:600px;
+height:100px;
+border-collapse: collapse;
+}
+#rank{
+width:400px;
+color:white;
+border:1px solid white;
+}
+#result{
+width:200px;
+color:orange;
+layout:fixed;
+border:1px solid white;
+}
+</style>
+<script type="text/javascript">
+
+ /*
+ 다음 json 데이터의 rank 순서대로 실시간 검색 순위가 순서대로
+표시 되도록 하시오.
+<조건> 3초 마다 순서가 바뀐다. (강호동 -> 이순신 -> 김유신 -> 최순실)
+<조건> 30초 후에 자동으로 종료된다.
+ 
+ */
+ window.onload = function(){
+	var i=1;
+	var obj;
+	var request = new XMLHttpRequest();	
+	request.open('get', '../step10_Json_Ajax/data/rank.json', true);
+	request.send();			
+	request.onreadystatechange = function () {
+		
+		if (request.readyState == 4){ // 리턴완료
+			if(request.status == 200) { // 정상 응답
+				obj = JSON.parse(request.responseText); //JSON 객체
+				result.innerHTML=obj.search_word[0].rank +"위 "+obj.search_word[0].name;
+			} else {
+				alert("잘못된 요청입니다.");
+			}		
+		}
+	}
+	var setInter =setInterval(function(){
+		var result = document.getElementById('result');
+		var str='';
+
+		str = obj.search_word[i].rank +"위 "+obj.search_word[i].name;
+		result.innerHTML = str;
+		i++;
+		if(i>3){
+			i=0;
+		}
+	},3000);
+	setTimeout(function() {
+		clearInterval(setInter);
+	}, 30000);
+}
+</script>
+
+</head>
+<body>
+	<h2>비동기 통신 결과</h2>
+	<hr>
+	<div id = "div1">
+		<table id = "t1">
+			<tr>
+				<td id="rank">실시간 검색 순위</td>
+				<td id="result"></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

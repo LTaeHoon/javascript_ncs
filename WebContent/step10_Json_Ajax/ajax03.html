@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	var btnClick = function () {
+		// result 객체 생성 
+		var result = document.getElementById("result");
+
+		// 1. ajax 객체 생성
+		var request = new XMLHttpRequest();
+
+		// 2. 요청 준비 
+		request.open('GET', "data/data.xml", true);  
+		// true : 비동기, false : 동기
+		
+		// 3. 요청
+		request.send();
+		
+		// 4. 수신 
+		request.onreadystatechange = function() {			
+			if (request.readyState == 4){
+				if(request.status ==200) {
+					
+					// xml 문서 형식으로 데이터 요청 
+					var xml = request.responseXML; // responseHTML(X), xml파싱		 			
+					
+					// name[index], price[index] 태그 가져오기 
+					var name = xml.getElementsByTagName("name"); // name 태그 
+					var price = xml.getElementsByTagName("price"); // price 태그
+					
+					alert("name 태그 수 : " + name.length);
+					alert("price 태그 수 : " + price.length);
+					
+					for(var i=0 ; i < name.length ; i++){ // 태그 수 만큼 반복 						
+						//result 위치에 name과 price 태그 내용 출력(childNodes[0] -> 자신의 노드)
+						result.innerHTML +="<h3>" + name[i].childNodes[0].nodeValue + "</h3>";
+						result.innerHTML +="<h3>" + price[i].childNodes[0].nodeValue + "</h3>";						
+					}					
+				} else {
+					alert("잘못된 요청입니다.");
+				}		
+			}
+		}
+			
+	};
+</script>
+
+</head>
+<body>
+
+<input type="button" value="요청" onclick="btnClick()">
+<br /><br />
+<h2> 서버에서 가져온 데이터</h2>
+<div id="result"></div>
+
+</body>
+</html>

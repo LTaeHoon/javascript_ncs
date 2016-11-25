@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>계산기 만들기</title>
+<style type="text/css">
+#input{
+	width :250px;
+	height : 40px;
+	text-align:right;
+	border:1px solid black;
+	
+}
+
+.div1{
+	border: 2px solid black;
+	width : 300px;
+	height : 300px;
+	text-align:center;
+	margin-left:400px;
+	
+}
+.t1{
+	width: 250px;
+	height:250px;
+	margin:20px
+}
+.t1 tr{
+	height:50px;
+}
+input[type="button"]{
+	width:98%;
+	height:98%;
+}
+#equals{
+	background-color:red;
+}
+#zero{
+	background-color:red;
+}
+</style>
+<script type="text/javascript">
+var data;
+
+var flag=0;//첫 입력을 확인할 인자
+
+	function data_input(param){
+		data = document.getElementById('input');
+		if(flag==0){
+			data.value=param;
+			flag=1;
+		}else{
+		data.value = data.value + param;
+		}
+	}
+	function result(){
+		data.value = eval(data.value);
+	}
+	function data_clear(){
+		data.value ='';
+	}
+</script>
+
+</head>
+<body>
+	<div class="div1">
+		<table class= "t1">
+			<tr> 
+				<td class=input colspan=5>
+				<input type="text" name="input" id="input" value="0" />
+				</td>
+			</tr>
+			<tr class="tr2">
+				<td><input type="button" value="7" onclick="data_input('7')"/></td> 
+				<td><input type="button" value="8" onclick="data_input('8')"/></td>
+				<td><input type="button" value="9" onclick="data_input('9')"/></td>
+				<td><input type="button" value="/" onclick="data_input('/')"/></td>
+				<td><input type="button" value="C" onclick="data_clear()"/></td>
+			</tr>
+			<tr class="tr2">
+				<td><input type="button" value="4" onclick="data_input('4')"/></td> 
+				<td><input type="button" value="5" onclick="data_input('5')"/></td>
+				<td><input type="button" value="6" onclick="data_input('6')"/></td>
+				<td><input type="button" value="*" onclick="data_input('*')"/></td>
+				<td><input type="button" value="%" onclick="data_input('%')"/></td>
+			</tr>
+			<tr class="tr2">
+				<td><input type="button" value="1" onclick="data_input('1')"/></td> 
+				<td><input type="button" value="2" onclick="data_input('2')"/></td>
+				<td><input type="button" value="3" onclick="data_input('3')"/></td>
+				<td><input type="button" value="-" onclick="data_input('-')"/></td>
+				<td rowspan='2'><input type="button" value="=" id="equals" onclick="result()"/></td>
+			</tr>
+			<tr class="tr2">
+				<td colspan='2'><input type="button" value="0" id="zero" onclick="data_input('0')"/></td> 
+				<td><input type="button" value="." onclick="data_input('.')"/></td>
+				<td><input type="button" value="+" onclick="data_input('+')"/></td>
+			</tr>
+		
+		</table>
+	
+	</div>
+	
+</body>
+</html>

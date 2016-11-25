@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>반복문(for, while, do ~ while)</title>
+<script type="text/javascript">
+	var sum = 0;
+	/* for(초기식;조건식;증감식){
+		//실행문
+		//1.[초기식] -> 2.조건식 ->3.실행문 ->4.증감식
+	}
+	*/
+	even =0;odd=0;
+	for(var i=1;i<=10;i++){//i++ : 카운터
+		if(i%2 == 0){
+			even+=i;//짝수 누적
+		}else{
+			odd+=i;//홀수 누적
+		}
+		sum +=i; //sum = sum + i, i:반복변수(=기준변수)
+	}
+	document.write('짝수의 합 ='+even+'<br>');
+	document.write('홀수의 합 ='+odd+'<br>');
+	document.write('1~10까지의 합 ='+sum+'<br>');
+	
+	/*
+	 문) 1~1000까지 3의 배수가 아니고, 2의 배수가 아닌 나머지 수를 대상으로 누적합을 구하시오.
+	*/
+
+	var tot =0;
+	for(var i=1;i<=1000;i++){
+		
+		if(!(i%3==0&&i%2==0)){
+			tot +=i;
+			document.write(i+' ');
+		}
+	} 
+	document.write('3의 배수가 아니고, 2의 배수가 아닌 나머지 수의 누적합은:'+tot);
+	
+</script>
+</head>
+<body>
+	<script type="text/javascript">
+		var num=1;
+		while(num<=5){//while(조건식)
+			document.write('num='+num +'<br>');
+	 		//num +=1; //카운터 변수(증감연산자)
+	 		num++;
+		}
+		//num = 6
+		do{
+			document.write('num='+num +'<br>');
+			//num-=1; //카운터 변수(감소연산자)
+			num--;
+		}while(num>0);
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>메타문자 이용 정규표현식</title>
+<script type="text/javascript">
+	//주민번호 패턴 검사 : 
+	obj1 = /\d{6}-[1,2,3,4]\d{6}/;
+	jumin="123456-1234567";
+	if(obj1.test(jumin)){
+		//result = '올바른 주민번호';
+		result = obj1.exec(jumin);
+	}else{
+		result ='틀린 주민번호';
+	}
+	
+	alert(result);
+	
+	//이메일 양식 검사 함수
+	function data_check(){
+		//hong@naver.com
+		//정규식패턴: /\w{4,}@\{3,}.\{2,}/
+		var obj = /\w{4,}@\w{3,}.\w{2,}/;
+		var email = document.getElementById('email').value;
+		if(obj.test(email)){
+			result = obj.exec(email);
+		}else{
+			result ='이메일 양식이 틀립니다.';
+		}
+		alert(result);
+	}
+
+</script>
+</head>
+<body>
+	이메일 입력: <input type="text" name="email" id="email" value='' size="20"/>
+	<input type="button" value="검사" onclick="data_check()"/>
+</body>
+</html>

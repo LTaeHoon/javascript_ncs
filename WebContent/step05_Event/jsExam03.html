@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>onLoad 관련 문제</title>
+  <script type="text/javascript">
+    window.onload = function(){ // 무명함수 
+  	    // btn1, btn2 객체 가져오기
+  	    btn1 = document.getElementById("btn1");
+  	    btn2 = document.getElementById("btn2");
+  	    // cnt1, cnt2 객체 가져오기
+  	    cnt1= document.getElementById("cnt1");
+  	    cnt2= document.getElementById("cnt2");
+  	    btn1.onclick = function(){ // 버튼1 클릭 시
+  	    	// cnt1 내용을 1씩 카운터
+  	    	cnt1.innerHTML = Number(cnt1.innerHTML)+1; // cnt1.innerHTML : 현재 cnt1 내용
+  	    }  	    
+  	    /* btn2.onclick = function(){ // 버튼2 클릭 시
+  	        // cnt2 내용을 1씩 카운터
+  	    	cnt2.innerHTML = Number(cnt2.innerHTML)+1;
+	    } */ 
+  	    btn2.onmouseover = function(){ // 버튼2 마우스 오버 시
+	        // cnt2 내용을 1씩 카운터
+	    	cnt2.innerHTML = Number(cnt2.innerHTML)+1;
+	    } 
+    } 
+  </script>
+</head>
+<body>
+   <button id="btn1"> 버튼1 </button>
+   <button id="btn2"> 버튼2 </button>
+   <hr>
+   <h1>Button1 - <span id="cnt1">0</span></h1>
+   <h1>Button2 - <span id="cnt2">0</span></h1>
+   <!-- <div> vs <span> 
+      공통점 : 컨테이너 역할(다수의 태그를 포함)
+     <div> : <tr> 유사함 - 다수의 블럭형 태그를 포함
+     <span> : <td> 유사함 - 다수의 라인형 태그를 포함
+   -->
+</body>
+</html>

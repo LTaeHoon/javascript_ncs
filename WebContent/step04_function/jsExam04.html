@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>element 객체 가져오기</title>
+<script type="text/javascript">
+ /*
+  body에서 엘리먼트 객체 가져오기(방법2)
+  방법1) eval()함수 이용
+  방법2) 태그 id를 이용
+  document.getElementById('id이름');
+  
+ */
+var data, result; //전역변수
+function eventCalc(param){ //param : 매개변수
+	//data의 엘리먼트를 객체 형태로 가져옴.
+	 data = document.getElementById('data');
+	 data.value = data.value + param;  //누적변수의 형태
+ }
+ function calc(){
+	 result = document.getElementById('result');
+	 result.value = eval(data.value);
+ }
+ function data_clear(){
+	 data.value = '';
+	 result.value='';
+ }
+</script>
+</head>
+<body>
+ <form name=frm>
+ 	data 입력:
+ 	<input type="text" name="data" id ="data" size="15"/> 
+ 	<!--name은 변수 지정하는 속성, id는 각각의 엘리먼트를 구분하는 구분자 지정-->
+    <input type="text" name="result" id="result" size="15" />
+    <br>
+    <input type="button" value="5" onclick="eventCalc('5')"/>
+    <input type="button" value="+" onclick="eventCalc('+')"/>
+    <input type="button" value="10" onclick="eventCalc('10')"/>
+    <!-- 수식 계산 버튼:계산 결과는 result 입력상자에 표시 -->
+    <input type="button" value="=" onclick="calc()"/>
+    <!-- 초기화 버튼  : 수식을 지우는 역할-->
+    <input type="button" value="C" onclick="data_clear()"/>
+    
+ </form>
+</body>
+</html>

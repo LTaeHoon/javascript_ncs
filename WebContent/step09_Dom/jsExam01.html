@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Document 이용 element(body 태그 안에 있는 태그) 객체 가져오기</title>
+<script type="text/javascript">
+  /*
+  	element : 태그 + 속성 + 값 + 내용
+  	ex) <a href="주소">내용</a>
+  	
+  	1. id로 가져오기 : 객체를 변수(유일) 저장
+  	2. name로 가져오기 : 객체를 배열(다수) 저장
+  	3. tag 이름으로 가져오기 : 객체를 배열(다수) 저장  
+  */
+  window.onload = function(){
+  		//브라우저 로딩 후 자동 실행 영역
+		//1. id로 객체 가져오기(변수 저장:id는  유일하기 때문에)
+  		var pwd = document.getElementById("pwd");
+  		alert(pwd.value);//암호를 출력
+  		
+  		//2. name으로 객체 가져오기(배열 저장 : name은 다수 저장 될 수 있음)
+  		var name = document.getElementsByName("name");
+  		//name[0],name[1]
+  		alert(name[0].value);  //이름 출력
+  		
+  		//3. tag 이름으로 객체 가져오기(배열 저장)
+  		var h1 = document.getElementsByTagName("h1");
+  		// h1[0]="첫번째 h1 태그", h1[1]="두번째 h1 태그"
+  		h1[0].innerHTML = "안녕하세요, 자바스크립트1"; //태그 내용 수정
+  		h1[1].style.color ="green";
+  	}
+  
+</script>
+</head>
+<body>
+  <h1 id="header1">Hello, Javascript1</h1>
+  <h1 id="header2">Hello, Javascript2</h1>
+  <input type="password" name="pwd" id="pwd" value ="1234" size="16"/><br>
+  <input type="text" name="name" value="홍길동" size="15"/>
+  
+</body>
+</html>

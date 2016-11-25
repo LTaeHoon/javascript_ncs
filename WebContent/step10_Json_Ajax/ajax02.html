@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	function btnClick() {
+		// 1. ajax 객체 생성
+		var request = new XMLHttpRequest();	
+		
+		// 2. open() : 요청 준비 -> json 데이터
+		request.open('get', 'https://api.github.com/repositories/858127/milestones/28/labels', true);
+		
+		// 3. send() : 요청 전송
+		request.send();			
+	
+		// 4. 데이터 수신
+		/* readyState : request 객체의 변화(상태)를 나타내는 속성
+		  0 : 객체 생성 직후 - open() 메서드 호출 전
+		  1 : get()을 호출한 상태 - send() 메서드 호출 전
+		  2 : send()를 호출한 상태
+		  3 : 서버에서 응답이 오기 시작한 상태(리턴 중)
+		  4 : 서버 응답이 완료된 상태(리턴 완료) 
+		
+		  status: 서버로부터의 응답의 상태
+		  - 100이면 처리중, 200이면 정상적으로 응답, 
+		  - 300이면 현재 redirect 중, 400번대이면 오류 발생 
+		  - 오류에서 404이면 페이지를 찾지 못함, 500번 대는 서버 오류
+
+		  onreadystateChange: readyState 상태가 변경될 때 호출될 함수 지정
+		  request 객체 변화를 감지하기 위해서 open()과 send() 앞부분에 작성함
+		*/
+		request.onreadystatechange = function () {
+			
+			if (request.readyState == 4){ // 리턴완료
+				if(request.status == 200) { // 정상 응답
+					var result = document.getElementById("result");
+					var obj = JSON.parse(request.responseText); //JSON 객체
+					var str ='';
+					for(i=0;i<obj.length;i++){
+						str += (i+1)+'->'+'id:'+obj[i].id +', url:'+obj[i].url+', name:'+obj[i].name+', color:'+obj[i].color+', default:'+obj[i].default +'<br>'; 
+					}
+					result.innerHTML = str;
+				} else {
+					alert("잘못된 요청입니다.");
+				}		
+			}
+		}
+		
+		
+	};
+</script>
+
+</head>
+<body>
+
+<input type="button" value="요청" onclick="btnClick()">
+<br /><br />
+
+<div id="result"></div>
+
+
+</body>
+</html>

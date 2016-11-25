@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Date 내장객체</title>
+<script type="text/javascript">
+	/*
+		setInterval(함수(내용),시간)
+		- 지정된 시간에 매번 함수르 호출한다.
+		
+	*/
+	
+	// 1초 단위로 함수를 호출
+	var setInter =setInterval(function() {
+		document.body.innerHTML +=
+			'<p>'+new Date().toLocaleString()  +'</p>';
+	}, 1000);
+	
+	//10초 후에 반복을 정지
+	setTimeout(function() {
+		clearInterval(setInter);
+	}, 10000);
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

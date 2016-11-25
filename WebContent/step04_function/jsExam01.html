@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>사용자 정의함수</title>
+<script type="text/javascript">
+  /* 
+  	function 함수명(인수){
+		실행문;
+		실행문;
+		return 값;
+ 	} 하나의 함수에는 한가지 기능만 넣는것이 좋다.
+  
+  */
+  
+  //덧셈 함수
+  function adder(x,y){ //가인수 = 매개변수(argument)
+		var add = x + y;
+  		return add; //반환 
+  }
+ 	
+  //함수 호출
+  var re = adder(100,50);
+  alert('함수 리턴 값 ='+re);
+  
+  /*
+  	문)[계산] 버튼을 클릭할 경우 키보드로 두 수를 입력받아서 사칙연산 결과를 출력하시오
+  	*/
+  var a,b;  //전역변수
+
+  function data_input(){ //데이터 입력
+  		a =Number(prompt('첫번째 수를 입력하세요:',0));
+  		b =Number(prompt('두번째 수를 입력하세요:',0));
+  		//지역변수 : 함수 종료시 자동으로 메모리에서 소멸
+  }
+  	
+  function calc(){ //데이터 연산
+  		data_input(); //함수호출
+  		alert('덧셈결과는:'+ (a+b)+'\n'
+  			+'뺄셈결과는:'+ (a-b)+'\n'
+  			+'곱셈결과는:'+ (a*b)+'\n'
+  			+'나눗셈결과는:'+ (a/b).toFixed(3)+'\n');	  
+  	}
+ 
+</script>
+</head>
+<body>
+	<form name='frm'>
+		<input type="button" value="계산" onclick ="calc()"/>
+	</form>
+
+</body>
+</html>

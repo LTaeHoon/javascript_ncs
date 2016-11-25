@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> onLoad() 핸들러 </title>
+<style type="text/css">
+#title:hover{
+	cursor:pointer;
+}
+</style>
+<script type="text/javascript">
+	window.onload = function (){ //무명함수(따라서 다른곳에서 호출이 불가)
+		//현재 문서가 로딩되면 자동으로 수행되는 문장
+	 //alert('문서가 브라우저에 로딩되었습니다.');
+	var title = document.getElementById('title');
+	title.onclick=function(){
+		//title 클릭시 수행되는 문장
+		this.style.color ='red'; //글자 색 변경
+		//this.style.속성 ='값' this는 앞에 지정한 객체를 의미
+		title.innerHTML = "H 태그 클릭!!"; //title 객체 안에 내용을 넣는다. 순수하게 값만 넣을 경우는 value, 양식을 같이 적용할려면 innerHTML 사용
+	 	}
+	};
+	
+
+</script>
+</head>
+<body>
+	<h1 id="title">CLICK</h1>																			
+</body>
+</html>

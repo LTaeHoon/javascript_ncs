@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>onload, onunload, onblur, onchange</title>
+  <script type="text/javascript">
+      function welcome() {
+		alert("오신걸 환영합니다.");
+	 }
+     function goodby() {
+		alert("다음에 또 봐요!!"); 
+	 }   
+     function data_move(user_id) { // user_id -> email_id 이동
+    	// 객체.value = 값; 
+    	document.getElementById("email_id").value = user_id; 
+	 }
+     function sel(email){ // select에서 변화가 있을 때    	 
+    	 if(email.value==""){ // 직접입력 선택
+    	   document.getElementById("domain").value="";
+    	   document.getElementById("domain").focus();//커서 이동
+    	 }else // 이메일 -> 도메인 이동
+    	   document.getElementById("domain").value=email.value;
+     }
+  </script>
+</head>
+<body> <!-- onload="welcome() onunload="goodby()">  -->
+           
+ 
+ <!--  2차 작성 : user_id -> email_id 이동 -->
+ <form name="frm">  
+   <table>
+    <tr>
+      <th> 아이디 </th>
+      <td> <input type="text" name="user_id" id="user_id"
+             onblur="data_move(frm.user_id.value)"/></td>
+             <!-- onblur : focus가 떠날 때 이벤트 발생 -->
+    </tr>
+    <tr>
+      <th> 이메일 </th>
+      <td> 
+         <input type="text" name="email_id" id="email_id">@
+         <input type="text" name="domain" id="domain">  
+         <!-- 3차 작성 : 
+              this : 현재 엘리먼트의 객체(select)를 인수로 넘김 -->
+         <select name="email" onchange="sel(this)">
+            <option value="">직접입력 </option>
+            <option value="naver.com">naver.com</option>
+            <option value="daum.net">daum.net</option>
+            <option value="gmail.com">gmail.com</option>         
+         </select>   
+         <!-- 사용자가 선택한 value값이 email변수에 저장 -> 전송 -->    
+      </td>
+    </tr>      
+   </table>
+  </form>
+</body>
+</html>
+
+

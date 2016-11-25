@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>for문의 활용 예</title>
+<script type="text/javascript">
+	function data_check(){
+		var input = document.frm.input.value   //document는 최상위 객체로 문서 전체를 의미한다.value :사용자 입력 값
+		//alert(input);
+		if(input ==""){
+			alert('데이터를 입력하세요.');
+			document.frm.input.focus(); //document는 생략 가능
+			return false; //다음 태그 행위 차단
+		}
+		
+		alert('데이터 전송~~~');
+		
+		var str ="관심사항 :";
+		var len = frm.inter.length;
+		//alert('배열길이:'+len);
+		for(var i=0;i<frm.inter.length;i++){
+			if(frm.inter[i].checked == true){
+				str += frm.inter[i].value+'\n'; //\n: 줄바꿈
+			}// if end
+		}// for end
+		alert(str);
+	}//function end	
+	
+</script>
+</head>
+<body>
+  <form name="frm" method="post" action="http://www.naver.com">
+  	data 입력 : <input type="text" name="input" size="15"/>
+  	<br>
+  	관심사항 :<!-- html09.html 파일 참조 -->
+  	<input type = "checkbox" name="inter" value="인터넷"/>인터넷
+	<input type = "checkbox" name="inter" value="소프트웨어"/>소프트웨어
+	<input type = "checkbox" name="inter" value="정보통신"/>정보통신
+	<input type = "checkbox" name="inter" value="프로그램"/>프로그램
+	<!-- 
+		변수 = 1개 값만 저장, 배열 = 다수의 값 저장
+		inter[0]="인터넷" inter[1]="소프트웨어" ... inter[3]="프로그램" -->
+	<br>
+  	<input type="submit" value="전송" onclick= "return data_check()"/>
+  	<input type="reset" value="취소"/>   
+  </form>
+</body>
+</html>

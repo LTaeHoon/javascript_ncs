@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>폼 컨트롤과 javascript</title>
+<script>
+	  var check=false; // 중복아이디 버튼 클릭 여부 
+	  
+	  function idCheck(){ // 중복 id 체크
+		check = true;  
+	   	var id = frm.id.value;
+	   	if(id=="hong"){
+	   		alert("중복 id 입니다.");
+	   		frm.id.value="";
+	   		frm.id.focus();
+	   	}else if(id==""){
+	   		alert("id를 입력하세요.");
+	   		frm.id.focus();
+	   	}else{
+	   		alert("사용가능한 id 입니다.");
+	   		frm.pwd.focus();
+	   	}
+	  }
+	  
+	  function data(){ // data 체크
+		var id = frm.id.value;  
+	   	var pwd = frm.pwd.value;
+	   	var email = frm.email.value;	   	
+   	    email += frm.domain.value; // 아이디와 도메인 결합
+   	    var gender='';
+   	    alert(frm.man.value);  //male
+   	    alert(frm.gender.value); //undefined
+   	    if(frm.man.value=="male")
+	    	gender = "남자";
+	    else
+	    	gender = "여자";
+   	    var upfile=frm.attchPhoto.value;
+   	    var accept = frm.accept;
+   	    var str = "수신 설정 : ";
+        for(var i=0; i< accept.length; i++){ // 배열 원소만큼 반복
+     	   if(accept[i].checked==true){
+     		str += accept[i].value + " ";
+     	   }
+        } // for end  
+   	    if(check==false){
+   	    	alert("중복아이디를 체크하세요.");
+   	    	frm.btn.focus();	
+   	    	return false;
+   	    }
+   	    if(id==""){
+	   		alert("아이디를 입력하세요.");
+	   		frm.id.focus();	 
+	   		return false;
+	   	}else if(pwd==""){
+	   		alert("비밀번호를 입력하세요.");
+	   		frm.pwd.focus();
+	   		return false;
+	   	}else{ // 정상인 경우 출력
+	   		document.write("아이디 : "+id + "<br>");
+	   		document.write("비밀번호 : "+pwd +"<br>");
+	   	    document.write("이메일 : " +  email + "<br>");
+	   	    document.write("성별 : " +  gender + "<br>");
+	   		document.write("업로드 파일 : " + upfile+"<br>");
+	   		document.write(str); // 수신 설정
+	   		
+	   		// 알림창 출력 
+	   		alert("아이디 : "+id + "\n" + 
+	   			  "비밀번호 : "+pwd +"\n" + 
+	   			  "이메일 : " +  email + "\n" + 
+	   			  "성별 : " +  gender + "\n" + 
+	   			  "업로드 파일 : " + upfile+"\n" +
+	   			  str);
+	   	}
+   	    
+	  }	  
+	</script>
+</head>
+	<body>
+		<h1>폼 컨트롤(input) 실습</h1>
+		<form name="frm" method="post" action="server.jsp">
+			<fieldset>
+				<legend>
+					회원가입
+				</legend>
+				<p>
+					<label for="userId">아이디</label>
+					<input type="text" name="id" id="userId" />
+					<input type="button"  name="btn" value="중복확인" onclick="idCheck()"/>
+				</p>
+				<p>
+					<label for="userPwd">비밀번호</label>
+					<input type="password" name="pwd" id="userPwd" />
+				</p>
+				<p>
+					<label for="userEmail">이메일</label>
+					<input type="text" name="email" id="userEmail" title="이메일 아이디 입력" />
+					&#64; <!--  @ 기호 관련 제어문자 -->
+					<input type="text" name="domain" id="userAccount" title="이메일 계정 입력" />
+				</p>
+				<p>
+					성별
+					<br />
+					<input type="radio" name="gender" id="man" value="male" />
+					<label for="man">남자</label>
+					<input type="radio" name="gender" id="woman" value="female" />
+					<label for="woman">여자</label>
+				</p>
+				<p>
+				<label for="attchPhoto">사진</label>
+				<input type="file" name="attchPhoto" id="attchPhoto" />
+				</p>
+				<p>
+					수신설정
+					<br>
+				<input type="checkbox" name="accept" value="메일 수신 허용" />
+				<label for="acceptEmail">메일 수신 허용</label>
+					<br>
+					<input type="checkbox" name="accept" value="SMS 수신 허용"/>
+					<label for="acceptSMS">SMS 수신 허용</label>
+				</p>
+				<p>
+					<!-- <input type="submit" value="확인" /> -->
+					<input type="button" value="확인" onclick=" data()"/>
+					<input type="reset" value="취소" />
+				</p>
+			</fieldset>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//1. 변수 선언, 초기화
+	var age = 25;
+	document.write("<h2> age: <font color='red'>");
+	document.write(age);
+	document.write("</font></h2>")
+	
+	// 2. 키보드 입력
+	var input = prompt('숫자를 입력하세요.',""); //문자입력
+	document.write("입력 값="+input+"<br>");
+	// 형변환(문자->숫자)
+	num=parseInt(input);
+	num = num + 100;
+	document.write("계산 값="+num);
+	
+	//3. 문자열 결합연산자 (+)
+	var str = '시작 문자열 :';
+	str += '우리나라 대한민국 '; //str = str + '문자열'
+	str +='korea, seoul';
+	alert(str); //알림창 출력
+</script>
+</head>
+<body>
+
+</body>
+</html>

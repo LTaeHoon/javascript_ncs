@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>onfocus, onkeydown 이벤트 핸들러</title>
+	 <script type="text/javascript">
+	     function strClear(){ // 포커스를 받은 경우
+	        document.frm.string.value="";
+	     }
+         function getChar(event){ // 현재 누른 키의 아스키 코드값 출력            	
+           	// 키의 아스키 코드값
+       		alert ("입력한 문자 코드: " + event.keyCode);	
+   	     }
+     </script>
+	</head>
+<body>
+	<form name="frm">
+   	   <input name="string" value="문자를 입력하세요" 
+   		onfocus="strClear()"	
+   		onkeydown="getChar(event)"/> 
+   		<!-- 
+   		  onfocus : 해당 상자에 커서가 들어온 경우 이벤트 발생
+   		  onkeydown : 키를 누르는 동안 이벤트 발생
+   		  event : 현재 발생한 이벤트 값(키보드 값)을 인수로 넘김(키워드)  -->
+	</form>
+</body>
+		
+
+
+
